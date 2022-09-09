@@ -18,6 +18,7 @@ if($total > 0) {
     $sql = "INSERT INTO usuario (mail,password,id_user_nivel) VALUES('$mail', sha1('$password'),$nivel)";
     $insert = mysqli_query($conexao, $sql);
 
-    header('Location: form_user.php?msg=1');
+    // header('Location: form_user.php?msg=1');
+    header('Location: ../index.php?msg=1');
 }
 ?>
