@@ -51,7 +51,13 @@
 							</div>
 
 							<div class="card-body">
-								<?php ?>
+								<?php
+							
+									if(isset($_GET['msg'])){?>
+										<div class="alert alert-success" role="alert">
+											Projeto adicionado com sucesso!
+										</div>
+								<?php }?>
 
 								<form action="_insert_project.php" method="post" enctype='multipart/form-data'>
 									<div class="form-group">

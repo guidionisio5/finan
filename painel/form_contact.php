@@ -48,7 +48,7 @@
 								<?php
 							
 								if(isset($_GET['msg'])){?>
-								<div class="alert alert-sucess" role="alert">
+								<div class="alert alert-success" role="alert">
 									Contato adicionado com sucesso!
 								</div>
 								<?php }?>
