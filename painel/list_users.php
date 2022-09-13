@@ -6,10 +6,10 @@
 		$('#editModal').on('show.bs.modal', function (event) {
 			//atribuindo os data-name (name)
 			var button = $(event.relatedTarget) 
-			var recipient = button.data('id') 
-			var recipient2 = button.data('name')
-			var recipient3 = button.data('mail')
-			var recipient4 = button.data('tel')
+			var recipient = button.data('id-code') 
+			var recipient2 = button.data('id-name')
+			var recipient3 = button.data('id-mail')
+			var recipient4 = button.data('id-tel')
 			
 			
 			
@@ -31,8 +31,8 @@
 	$(function(){
 		$('#deleteModal').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget) 
-			var recipient = button.data('id-delete') 
-			var recipient2 = button.data('name-delete')
+			var recipient = button.data('id-code') 
+			var recipient2 = button.data('id-name')
 			var modal = $(this)
 			modal.find('.modal-title').text('Delete Code: ' + recipient)
 			modal.find('#recipient-id-delete').val(recipient)
@@ -133,7 +133,9 @@
 																	
 																	$id = $array['id'];
 																	$name = $array['name'];
+																	$mail = $array['mail'];
 																	$phone = $array['telephone'];
+
 																	
 														?>
 															<tr>
@@ -141,12 +143,12 @@
 																<td><?php echo $phone ?></td>
 
 																	<td>
-																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id="" data-name="" data-mail="" data-tel="" data-nivel=""><i class="fas fa-user-edit"></i></button>
+																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id-code="<?php echo $id?>" data-id-name="<?php echo $name?>"data-id-mail="<?php echo $mail?>" data-id-tel="<?php echo $phone?>"><i class="fas fa-user-edit"></i></button>
 
 																	</button>
 
 
-																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-delete="" data-name-delete=""><i class="fas fa-user-minus"></i></button>
+																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-code="<?php echo $id?>" data-id-name="<?php echo $name?>"><i class="fas fa-user-minus"></i></button>
 
 																		<button type="button" class="btn btn-primary" title="Nivel" data-toggle="modal" data-target="#nivelModal" data-id-nivel="" ><i class="fas fa-user-plus"></i></button> 
 																	

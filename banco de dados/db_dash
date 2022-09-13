@@ -1,0 +1,140 @@
+-- --------------------------------------------------------
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           10.4.22-MariaDB - mariadb.org binary distribution
+-- OS do Servidor:               Win64
+-- HeidiSQL Versão:              12.0.0.6468
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Copiando estrutura do banco de dados para db_dash
+CREATE DATABASE IF NOT EXISTS `db_dash` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `db_dash`;
+
+-- Copiando estrutura para tabela db_dash.agenda
+CREATE TABLE IF NOT EXISTS `agenda` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `business` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.agenda: ~3 rows (aproximadamente)
+INSERT INTO `agenda` (`id`, `name`, `mail`, `telephone`, `business`) VALUES
+	(1, 'Guilherme Dionisio', 'guidionisio@gmail.com', '(19) 99245-5433', '(19) 3633-2422'),
+	(2, 'Lucas Tavares', 'lucastavares@gmail.com', '(19) 99232-5544', '(19) 3633-2255'),
+	(3, 'Kauã Carosi', 'kaua@gmail.com', '(19) 99255-7788', '(19) 3322-4455');
+
+-- Copiando estrutura para tabela db_dash.expense
+CREATE TABLE IF NOT EXISTS `expense` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(50) NOT NULL,
+  `descricao` varchar(220) NOT NULL,
+  `dateexpense` date NOT NULL,
+  `value` varchar(15) NOT NULL,
+  `categoria` varchar(50) NOT NULL,
+  `doc` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.expense: ~0 rows (aproximadamente)
+
+-- Copiando estrutura para tabela db_dash.nivel
+CREATE TABLE IF NOT EXISTS `nivel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_nivel` varchar(50) NOT NULL,
+  `value_nivel` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.nivel: ~0 rows (aproximadamente)
+
+-- Copiando estrutura para tabela db_dash.payment
+CREATE TABLE IF NOT EXISTS `payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` int(11) NOT NULL,
+  `payment` varchar(50) NOT NULL,
+  `dateend` date NOT NULL,
+  `doc` varchar(200) NOT NULL,
+  `invoice` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `obs` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.payment: ~0 rows (aproximadamente)
+
+-- Copiando estrutura para tabela db_dash.project
+CREATE TABLE IF NOT EXISTS `project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` int(11) NOT NULL,
+  `client` varchar(100) NOT NULL,
+  `service` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `datestart` date NOT NULL,
+  `dateend` date NOT NULL,
+  `paytotal` varchar(100) NOT NULL,
+  `npayments` int(11) NOT NULL,
+  `obs` text NOT NULL,
+  `contract` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.project: ~2 rows (aproximadamente)
+INSERT INTO `project` (`id`, `code`, `client`, `service`, `description`, `datestart`, `dateend`, `paytotal`, `npayments`, `obs`, `contract`) VALUES
+	(1, 2536, 'Guilherme', 'TI', 'TI', '0000-00-00', '2022-09-19', '11.000,00', 2, 'Valor de Entrada, observafiowrhguiwrehfuiweqhfuiwehufiewhufções e etc...', 'f91ea568b84065db0c9a28d3a2589341.png'),
+	(2, 4800, 'Kauã', 'TI', 'TI', '0000-00-00', '2022-09-30', '8.000,00', 3, 'ruwhvfwryvwyvdueyydwyed', '4ad8bb5bac3aae40e58ca657a882f0ee.png');
+
+-- Copiando estrutura para tabela db_dash.tasks
+CREATE TABLE IF NOT EXISTS `tasks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` int(11) NOT NULL,
+  `task` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.tasks: ~9 rows (aproximadamente)
+INSERT INTO `tasks` (`id`, `code`, `task`, `status`) VALUES
+	(1, 1504, 'uehfwewubduwebiweiweuijiew', 'Pendente'),
+	(2, 1504, 'eefniuowheduhweuidhewudhwebdwe', 'Pendente'),
+	(3, 1504, 'fejoihfwoihoiueniweiduieewuwebuhweuewuew', 'Pendente'),
+	(4, 3463, 'wedhuehudhqidhqwhduwq', 'Pendente'),
+	(5, 3463, 'rehf8ewiuhjedijehdu9qedqwd', 'Pendente'),
+	(6, 2536, 'ioerwhfuhwurefhiue2whuw', 'Pendente'),
+	(7, 2536, 'hrwuihugi3rwhu34hu3', 'Pendente'),
+	(8, 4800, 'ufh3uiwfui4uiwuidue2yu8d2ey8dg2y3', 'Pendente'),
+	(9, 4800, 'refruiuhroiioruhruowerf', 'Pendente');
+
+-- Copiando estrutura para tabela db_dash.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mail` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `id_user_nivel` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `tel` varchar(50) NOT NULL,
+  `cnpj` varchar(50) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela db_dash.usuario: ~1 rows (aproximadamente)
+INSERT INTO `usuario` (`id`, `mail`, `password`, `id_user_nivel`, `name`, `tel`, `cnpj`, `image`) VALUES
+	(4, 'gui@gmail.com', 'a9eb2f9201ab0db1fbe50c0cc949817eb54a1b49', 3, '', '', '', '');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
