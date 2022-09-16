@@ -27,11 +27,16 @@
         <br><br>
 
         <form action="index1.php" method="post">
-            
+        
 
-            <div class="alert alert-danger" role="alert">
-              Senha errada/Este e-mail não está cadastrado
-            </div>
+          <?php
+
+            if(isset($_GET['err'])) {?>
+              <div class="alert alert-danger" role="alert">
+                E-mail ou senha inválidas!
+              </div>
+          <?php }	?>
+
           
 
           <div class="form-group">

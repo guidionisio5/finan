@@ -19,7 +19,7 @@ if($passwordEnc == $passwordBase) {
     $_SESSION['mailx'] = $mail;
     header('Location: ./painel/index.php');
 } else {
-    header('Location: index.php?msg=2');
+    header('Location: index.php?err=1');
 }
 
 ?>
