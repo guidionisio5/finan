@@ -2,6 +2,7 @@
 
 include 'header.php';
 include 'conexao/conexao.php';
+include 'script/password.php';
 
 ?>
 
@@ -11,14 +12,13 @@ include 'conexao/conexao.php';
 		$('#editModal').on('show.bs.modal', function (event) {
 			//atribuindo os data-name (name)
 			var button = $(event.relatedTarget) 
-			var recipient = button.data('id-mail') 
-			
-			
-			
+			var recipient = button.data('id-id')
+			var recipient2 = button.data('id-mail') 
 			var modal = $(this)
 			//insere os valores dentro dos inputs pelo id 
 			modal.find('.modal-title').text('Verification Code ' + recipient)
-			modal.find('#recipient-mail').val(recipient)
+			modal.find('#recipient-id').val(recipient)
+			modal.find('#recipient-mail').val(recipient2)
 
 			
 		});
@@ -131,17 +131,15 @@ include 'conexao/conexao.php';
 																	
 																	$id = $array['id'];
 																	$mail = $array['mail'];
-																	// $password = $array['password'];
 																	$nivel = $array['id_user_nivel'];
-
-																	
+																
 														?>
 															<tr>
 																<td><?php echo $mail ?></td>
 																<td><?php echo $nivel ?></td>
 
 																	<td>
-																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id-mail="<?php echo $mail?>"><i class="fas fa-user-edit"></i></button>
+																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>"><i class="fas fa-user-edit"></i></button>
 
 																	</button>
 
@@ -182,16 +180,27 @@ include 'conexao/conexao.php';
 																	</div>
 																	<div class="modal-body">
 																		<form action="_edit_user.php?=id<?php echo $id?>" method="post">
-																	
+																		<div class="form-group">
+
+																			<label for="message-text" class="col-form-label">ID</label>
+																			<input type="text" class="form-control" id="recipient-id"  name="id">
+																		</div>
 																			<div class="form-group">
 
 																				<label for="message-text" class="col-form-label">E-Mail</label>
 																				<input type="text" class="form-control" id="recipient-mail"  name="mail">
 																			</div>
 																			<div class="form-group">
+																			<?php
+
+																				if(isset($_GET['msg'])) {?>
+																					<div class="alert alert-danger" role="alert">
+																						As senhas não são iguais
+																					</div>
+																			<?php }	?>
 
 																				<label for="message-text" class="col-form-label">Current Password</label>
-																				<input type="text" class="form-control" id="current_password"  name="current_password">
+																				<input type="text" class="form-control" id="current_password" name="current_password">
 																			</div>
 																			<div class="form-group">
 

@@ -298,7 +298,7 @@ include 'conexao/conexao.php';
 																<!-- <input type="text" class="form-control" id="recipient-id" style="display: none">-->
 																<label for="message-text" class="col-form-label">Code</label>
 																<input type="text" class="form-control" id="recipient-id-delete" readonly name="id">
-																<input type="text" class="form-control" name="code" value="" style='display: none'>
+																<input type="text" class="form-control" name="code" value="<?php echo $code ?>" style='display: none'>
 															</div>
 															<div class="form-group">
 
