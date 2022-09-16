@@ -29,8 +29,8 @@
         <form action="index1.php" method="post">
             
 
-              <div class="alert alert-danger" role="alert">
-             Senha errada/Este e-mail não está cadastrado
+            <div class="alert alert-danger" role="alert">
+              Senha errada/Este e-mail não está cadastrado
             </div>
           
 

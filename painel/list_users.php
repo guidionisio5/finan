@@ -30,12 +30,14 @@ include 'script/password.php';
 	$(function(){
 		$('#deleteModal').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget) 
-			var recipient = button.data('id-mail') 
-			var recipient2 = button.data('id-nivel')
+			var recipient = button.data('id-id') 
+			var recipient2 = button.data('id-mail') 
+			var recipient3 = button.data('id-nivel')
 			var modal = $(this)
 			modal.find('.modal-title').text('Delete Code: ' + recipient)
-			modal.find('#recipient-mail-delete').val(recipient)
-			modal.find('#recipient-nivel-delete').val(recipient2)
+			modal.find('#recipient-id-delete').val(recipient)
+			modal.find('#recipient-mail-delete').val(recipient2)
+			modal.find('#recipient-nivel-delete').val(recipient3)
 			
 		});
 
@@ -97,8 +99,29 @@ include 'script/password.php';
 					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
-					
-						
+					<?php
+
+						if(isset($_GET['suc'])) {?>
+							<div class="alert alert-success" role="alert">
+								Alteração efetuada com sucesso!
+							</div>
+					<?php }	?>
+
+					<?php
+
+						if(isset($_GET['err'])) {?>
+							<div class="alert alert-danger" role="alert">
+								As senhas não são iguais!
+							</div>
+					<?php }	?>
+
+					<?php
+
+						if(isset($_GET['del'])) {?>
+							<div class="alert alert-success" role="alert">
+								Usuário deletado com sucesso!
+							</div>
+					<?php }	?>
 						<div class="card mb-3">
 							<div class="card-header">
 								<h3><i class="far fa-check-square"></i> List Users</h3>
@@ -107,8 +130,7 @@ include 'script/password.php';
 							<div class="card-body">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 									<div class="card mb-3">
-										
-
+																		
 										<div class="card-body">
 											<div class="table-responsive">
 												<table id="example" class="table table-bordered table-hover display" style="width:100%">
@@ -144,7 +166,7 @@ include 'script/password.php';
 																	</button>
 
 
-																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-mail="<?php echo $mail?>" data-id-nivel="<?php echo $nivel?>"><i class="fas fa-user-minus"></i></button>
+																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>" data-id-nivel="<?php echo $nivel?>"><i class="fas fa-user-minus"></i></button>
 
 																		<button type="button" class="btn btn-primary" title="Nivel" data-toggle="modal" data-target="#nivelModal" data-id-nivel="<?php echo $nivel?>" ><i class="fas fa-user-plus"></i></button> 
 																	
@@ -179,38 +201,31 @@ include 'script/password.php';
 																		</button>
 																	</div>
 																	<div class="modal-body">
-																		<form action="_edit_user.php?=id<?php echo $id?>" method="post">
+																		<form action="_edit_user.php" method="post">
 																		<div class="form-group">
 
-																			<label for="message-text" class="col-form-label">ID</label>
-																			<input type="text" class="form-control" id="recipient-id"  name="id">
+																			<label for="message-text" class="col-form-label" hidden></label>
+																			<input type="text" class="form-control" id="recipient-id" readonly name="id" hidden>
 																		</div>
 																			<div class="form-group">
 
 																				<label for="message-text" class="col-form-label">E-Mail</label>
-																				<input type="text" class="form-control" id="recipient-mail"  name="mail">
+																				<input type="email" class="form-control" id="recipient-mail"  name="mail">
 																			</div>
 																			<div class="form-group">
-																			<?php
-
-																				if(isset($_GET['msg'])) {?>
-																					<div class="alert alert-danger" role="alert">
-																						As senhas não são iguais
-																					</div>
-																			<?php }	?>
 
 																				<label for="message-text" class="col-form-label">Current Password</label>
-																				<input type="text" class="form-control" id="current_password" name="current_password">
+																				<input type="password" class="form-control" id="current_password" name="current_password">
 																			</div>
 																			<div class="form-group">
 
 																				<label for="message-text" class="col-form-label">New Password</label>
-																				<input type="text" class="form-control" id="password"  name="password">
+																				<input type="password" class="form-control" id="new_password"  name="new_password">
 																			</div>
 																			<div class="form-group">
 
 																				<label for="message-text" class="col-form-label">Confirm Password</label>
-																				<input type="text" class="form-control" id="confirm-password"  name="confirm_password">
+																				<input type="password" class="form-control" id="confirm_password"  name="confirm_password">
 																			</div>
 																			
 																			
@@ -237,14 +252,19 @@ include 'script/password.php';
 																	<div class="modal-body">
 																		<form action="delete_user.php" method="post">
 																			<div class="form-group">
+
+																				<label for="message-text" class="col-form-label" hidden></label>
+																				<input type="text" class="form-control" id="recipient-id-delete" hidden readonly name="id">
+																			</div>
+																			<div class="form-group">
 																				<!-- <input type="text" class="form-control" id="recipient-id" style="display: none">-->
 																				<label for="message-text" class="col-form-label">E-Mail</label>
-																				<input type="text" class="form-control" id="recipient-mail-delete" readonly name="id">
+																				<input type="text" class="form-control" id="recipient-mail-delete" readonly name="mail">
 																			</div>
 																			<div class="form-group">
 
 																				<label for="message-text" class="col-form-label">User level</label>
-																				<input type="text" class="form-control" id="recipient-nivel-delete" readonly name="name">
+																				<input type="text" class="form-control" id="recipient-nivel-delete" readonly name="userlevel">
 																			</div>
 
 
@@ -327,16 +347,16 @@ include 'script/password.php';
 						} );
 					</script>
 		<script type="text/javascript">
-			var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+			var new_password = document.getElementById("new_password"), confirm_password = document.getElementById("confirm_password");
 
 			function validatePassword(){
-  			 	if(password.value != confirm_password) {
+  			 	if(new_password.value != confirm_password) {
     				confirm_password.setCustomValidity("Senhas diferentes");
   				}else{
     				confirm_password.setCustomValidity('');
   				}
 
-  				if(password.value == '' || confirm_password.value == ''){
+  				if(new_password.value == '' || confirm_password.value == ''){
     				confirm_password.setCustomValidity("Por favor, coloque a senha");
   				}else{
     				confirm_password.setCustomValidity('');
