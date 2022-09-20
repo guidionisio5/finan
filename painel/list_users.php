@@ -3,7 +3,13 @@
 include 'header.php';
 include 'conexao/conexao.php';
 include 'script/password.php';
+include '_select_nivel.php';
 
+// $nivelUser = $_SESSION['nivelx']; 
+
+// if($nivelUser == 3){
+// 	header('Location:')
+// }
 ?>
 
 
@@ -47,11 +53,13 @@ include 'script/password.php';
 	$(function(){
 		$('#nivelModal').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget) 
-			var recipient = button.data('id-nivel') 
+			var recipient = button.data('id-id') 
+			var recipient2 = button.data('id-nivel') 
 			
 			var modal = $(this)
 			modal.find('.modal-title').text('Nivel Code: ' + recipient)
-			modal.find('#recipient-id-nivel').val(recipient)
+			modal.find('#recipient-id-id').val(recipient)
+			modal.find('#recipient-id-nivel').val(recipient2)
 			
 			
 		});
@@ -111,7 +119,7 @@ include 'script/password.php';
 
 						if(isset($_GET['err'])) {?>
 							<div class="alert alert-danger" role="alert">
-								As senhas não são iguais!
+								A senha antiga está errada!
 							</div>
 					<?php }	?>
 
@@ -122,6 +130,15 @@ include 'script/password.php';
 								Usuário deletado com sucesso!
 							</div>
 					<?php }	?>
+
+					<?php
+
+						if(isset($_GET['alt'])) {?>
+							<div class="alert alert-success" role="alert">
+								Nível alterado com sucesso!
+							</div>
+					<?php }	?>
+					
 						<div class="card mb-3">
 							<div class="card-header">
 								<h3><i class="far fa-check-square"></i> List Users</h3>
@@ -136,18 +153,19 @@ include 'script/password.php';
 												<table id="example" class="table table-bordered table-hover display" style="width:100%">
 													<thead>
 														<tr>
-															<th>Name</th>
+															<th>E-Mail</th>
 															<th>User level</th>
-													
+
+															<?php if($nivelUser != 3){?>
 																<th>Action</th>
-									
+															<?php }?>
 														</tr>
 													</thead>
 													<tbody>
 														<?php 
 
 															$sql = "SELECT * FROM usuario";
-																$search = mysqli_query($conexao,$sql);	
+															$search = mysqli_query($conexao,$sql);	
 
 																while($array = mysqli_fetch_array($search)) {
 																	
@@ -156,24 +174,33 @@ include 'script/password.php';
 																	$nivel = $array['id_user_nivel'];
 																
 														?>
+
+														<?php 
+															$sql2 = "SELECT * FROM nivel WHERE id = '$nivel'";
+															$search2 = mysqli_query($conexao,$sql2);
+															
+																while($array2 = mysqli_fetch_array($search2)){
+																	$nameNivel = $array2['name_nivel']; 
+															
+														?>
 															<tr>
 																<td><?php echo $mail ?></td>
-																<td><?php echo $nivel ?></td>
-
+																<td><?php echo $nameNivel ?></td>
+																	
+																<?php if($nivelUser != 3){?>
 																	<td>
 																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>"><i class="fas fa-user-edit"></i></button>
 
-																	</button>
+																		</button>
+																		
+																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>" data-id-nivel="<?php echo $nameNivel?>"><i class="fas fa-user-minus"></i></button>
 
-
-																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>" data-id-nivel="<?php echo $nivel?>"><i class="fas fa-user-minus"></i></button>
-
-																		<button type="button" class="btn btn-primary" title="Nivel" data-toggle="modal" data-target="#nivelModal" data-id-nivel="<?php echo $nivel?>" ><i class="fas fa-user-plus"></i></button> 
+																		<button type="button" class="btn btn-primary" title="Nivel" data-toggle="modal" data-target="#nivelModal" data-id-id="<?php echo $id?>" data-id-nivel="<?php echo $nameNivel?>" ><i class="fas fa-user-plus"></i></button> 
 																	
 
-																	
-																</td>
-															
+																		
+																	</td>
+																<?php }?>
 														</tr>
 
 														<!-- Edit Modal -->
@@ -187,7 +214,10 @@ include 'script/password.php';
 
 
 
-														<?php } ?>
+														<?php 
+																}
+															} 
+														?>
 													</tbody>
 												</table>
 											</div>
@@ -288,16 +318,22 @@ include 'script/password.php';
 																			</button>
 																		</div>
 																		<div class="modal-body">
-																			<form action="edit_nivel.php" method="post">
+																			<form action="_edit_nivel.php" method="post">
+																				<div class="form-group">
+																					<label for="message-text" class="col-form-label" hidden></label>
+																					<input type="text" class="form-control" id="recipient-id-id" hidden readonly name="id">
+																					</div>
 																				<div class="form-group">
 																					<!-- <input type="text" class="form-control" id="recipient-id" style="display: none">-->
 																					<label for="message-text" class="col-form-label">Current level</label>
-																					<input type="text" class="form-control" id="recipient-id-nivel" readonly name="id">
+																					<input type="text" class="form-control" id="recipient-id-nivel" readonly name="current_level">
 																				</div>
 																				<div class="form-group">
 																					<label for="exampleFormControlSelect1">New level</label>
-																					<select class="form-control" id="exampleFormControlSelect1" name="nivel">
-																						
+																					<select class="form-control" id="exampleFormControlSelect1" name="new_nivel">
+																						<option value="1">Administrador</option>
+																						<option value="2">Manager</option>
+																						<option value="3">User</option>
 																					</select>
 																				</div>
 
@@ -364,6 +400,6 @@ include 'script/password.php';
  
 			}
 
-				password.onchange = validatePassword;
+				new_password.onchange = validatePassword;
 				confirm_password.onkeyup = validatePassword;
-				</script>
+		</script>

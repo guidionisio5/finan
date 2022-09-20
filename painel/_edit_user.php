@@ -21,8 +21,7 @@ if($password == $currentPassword){
     $sql2 = "UPDATE usuario SET `mail` = '$mail', `password` = sha1('$newPassword') WHERE id = $id";
     $att = mysqli_query($conexao,$sql2);
     
-    $_SESSION['mailx'] = $mail;
-    header('Location: list_users.php?suc');
+    header('Location: list_users.php?suc=1');
 
 }else{
     header('Location: list_users.php?err=1');
