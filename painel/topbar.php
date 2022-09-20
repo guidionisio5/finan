@@ -2,7 +2,7 @@
 
             <!-- LOGO -->
             <div class="headerbar-left">
-                <a href="index.html" class="logo">
+                <a href="index.php" class="logo">
                     <img alt="Logo" src="assets/images/logo.png" />
                     <span>Dashboard</span>
                 </a>

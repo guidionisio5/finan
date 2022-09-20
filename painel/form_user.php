@@ -1,7 +1,15 @@
-<?php include 'header.php'; ?>
+<?php 
 
+session_start();
+include 'header.php'; 
 
+$nivelUser = $_SESSION['nivelx']; 
 
+if($nivelUser == 3){
+	header('Location: index.php?err=1');
+}
+
+?>
 
 <body class="adminbody">
 	

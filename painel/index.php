@@ -33,7 +33,14 @@
                         </div>
                     </div>
                     <!-- end row -->
+                    
+                    <?php
 
+						if(isset($_GET['err'])) {?>
+							<div class="alert alert-danger" role="alert">
+								Você não pode acessar esta página!
+							</div>
+					<?php }	?>
 
                     <div class="row">
                         <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">

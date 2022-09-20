@@ -1,15 +1,16 @@
 <?php 
 
+session_start();
 include 'header.php';
 include 'conexao/conexao.php';
 include 'script/password.php';
-include '_select_nivel.php';
+// include '_select_nivel.php';
 
-// $nivelUser = $_SESSION['nivelx']; 
+$nivelUser = $_SESSION['nivelx']; 
 
-// if($nivelUser == 3){
-// 	header('Location:')
-// }
+if($nivelUser == 3){
+	header('Location: index.php?err=1');
+}
 ?>
 
 
@@ -155,10 +156,8 @@ include '_select_nivel.php';
 														<tr>
 															<th>E-Mail</th>
 															<th>User level</th>
-
-															<?php if($nivelUser != 3){?>
-																<th>Action</th>
-															<?php }?>
+															<th>Action</th>
+															
 														</tr>
 													</thead>
 													<tbody>
@@ -187,7 +186,7 @@ include '_select_nivel.php';
 																<td><?php echo $mail ?></td>
 																<td><?php echo $nameNivel ?></td>
 																	
-																<?php if($nivelUser != 3){?>
+																
 																	<td>
 																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>"><i class="fas fa-user-edit"></i></button>
 
@@ -200,7 +199,7 @@ include '_select_nivel.php';
 
 																		
 																	</td>
-																<?php }?>
+															 
 														</tr>
 
 														<!-- Edit Modal -->
