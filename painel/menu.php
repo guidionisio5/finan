@@ -12,9 +12,9 @@ session_start();
         <div id="sidebar-menu">
                     <ul style="margin-top: 30px">
 
-                       <li class="submenu">
+                    <li class="submenu">
                         <a href="#">
-                            <i class="fas fa-laptop"></i>
+                        <i class="fas fa-laptop"></i>
                             <span> Agenda Telefônica </span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -31,6 +31,8 @@ session_start();
                     </li>
 
                     <?php
+                        // var_dump($_SESSION['nivelx']);
+
                         $nivelUser = $_SESSION['nivelx']; 
 
                         if($nivelUser != 3){

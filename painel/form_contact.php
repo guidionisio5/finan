@@ -41,7 +41,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 						<div class="card mb-3">
 							<div class="card-header">
-								<h3><i class="far fa-check-square"></i>Formulário de Contatos</h3>
+								<h3><i class="far fa-check-square"></i> Formulário de Contatos</h3>
 							</div>
 
 							<div class="card-body">
