@@ -1,15 +1,15 @@
+<?php
+
+session_start();
+
+?>
+
 <!-- Left Sidebar -->
 <div class="left main-sidebar">
 
     <div class="sidebar-inner leftscroll">
 
         <div id="sidebar-menu">
-
-                
-
-
-
-
                     <ul style="margin-top: 30px">
 
                        <li class="submenu">
@@ -29,25 +29,35 @@
                             </li>
                         </ul>
                     </li>
-                
-                    <li class="submenu">
-                        <a href="#">
-                           <i class="fas fa-users"></i>
-                            <span> Usuários </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="list-unstyled">
-                            <li>
-                             
-                                <a href="form_user.php">Adicionar Usuários</a>
-                            </li>
-                            <li>
-                             
-                                <a href="list_users.php">Listar Usuários</a>
-                            </li>
-                        </ul>
-                    </li>
 
+                    <?php
+                        $nivelUser = $_SESSION['nivelx']; 
+
+                        if($nivelUser != 3){
+                            
+                        
+                    ?>  
+                        <li class="submenu">
+                            <a href="#">
+                            <i class="fas fa-users"></i>
+                                <span> Usuários </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="list-unstyled">
+                                <li>
+                                
+                                    <a href="form_user.php">Adicionar Usuários</a>
+                                </li>
+                                <li>
+                                
+                                    <a href="list_users.php">Listar Usuários</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    <?php
+                        }
+                    ?>
                     <li class="submenu">
                         <a href="#">
                            <i class="fas fa-project-diagram"></i>
