@@ -1,4 +1,5 @@
- <div class="headerbar">
+<?php include '_select_nivel.php';?>
+<div class="headerbar">
 
             <!-- LOGO -->
             <div class="headerbar-left">
@@ -15,7 +16,7 @@
  
                     <li class="list-inline-item dropdown notif">
                         <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
-                            <img src="assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                            <img src="images/profile/<?php echo $image. '.jpg'?>" alt="Profile image" class="avatar-rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
@@ -32,7 +33,7 @@
                             </a>
 
                             <!-- item-->
-                            <a href="#" class="dropdown-item notify-item">
+                            <a href="logout.php" class="dropdown-item notify-item">
                                 <i class="fas fa-power-off"></i>
                                 <span>Logout</span>
                             </a>

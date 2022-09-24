@@ -1,8 +1,3 @@
-<?php
-
-session_start();
-
-?>
 
 <!-- Left Sidebar -->
 <div class="left main-sidebar">

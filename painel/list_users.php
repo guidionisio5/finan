@@ -188,15 +188,10 @@ if($nivelUser == 3){
 																	
 																
 																	<td>
-																		<button type="button" class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#editModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>"><i class="fas fa-user-edit"></i></button>
-
-																		</button>
-																		
+																	
 																		<button type="button" class="btn btn-danger" title="Delete" data-toggle="modal" data-target="#deleteModal" data-id-id="<?php echo $id?>" data-id-mail="<?php echo $mail?>" data-id-nivel="<?php echo $nameNivel?>"><i class="fas fa-user-minus"></i></button>
 
 																		<button type="button" class="btn btn-primary" title="Nivel" data-toggle="modal" data-target="#nivelModal" data-id-id="<?php echo $id?>" data-id-nivel="<?php echo $nameNivel?>" ><i class="fas fa-user-plus"></i></button> 
-																	
-
 																		
 																	</td>
 															 
@@ -220,54 +215,6 @@ if($nivelUser == 3){
 													</tbody>
 												</table>
 											</div>
-											<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-															<div class="modal-dialog">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h5 class="modal-title" id="exampleModalLabel">New message</h5>
-																		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-																			<span aria-hidden="true">&times;</span>
-																		</button>
-																	</div>
-																	<div class="modal-body">
-																		<form action="_edit_user.php" method="post">
-																		<div class="form-group">
-
-																			<label for="message-text" class="col-form-label" hidden></label>
-																			<input type="text" class="form-control" id="recipient-id" readonly name="id" hidden>
-																		</div>
-																			<div class="form-group">
-
-																				<label for="message-text" class="col-form-label">E-Mail</label>
-																				<input type="email" class="form-control" id="recipient-mail"  name="mail">
-																			</div>
-																			<div class="form-group">
-
-																				<label for="message-text" class="col-form-label">Current Password</label>
-																				<input type="password" class="form-control" id="current_password" name="current_password">
-																			</div>
-																			<div class="form-group">
-
-																				<label for="message-text" class="col-form-label">New Password</label>
-																				<input type="password" class="form-control" id="new_password"  name="new_password">
-																			</div>
-																			<div class="form-group">
-
-																				<label for="message-text" class="col-form-label">Confirm Password</label>
-																				<input type="password" class="form-control" id="confirm_password"  name="confirm_password">
-																			</div>
-																			
-																			
-
-																		</div>
-																		<div class="modal-footer">
-																			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-																			<button type="submit" class="btn btn-primary">Change</button>
-																		</div>
-																	</form>
-																</div>
-															</div>
-														</div>
 											<!-- Delete Modal -->
 														<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 															<div class="modal-dialog">

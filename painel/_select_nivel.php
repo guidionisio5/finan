@@ -18,4 +18,5 @@ $name = $array['name'];
 $cnpj = $array['cnpj'];
 $tel = $array['tel'];
 $nivelUser = $array['id_user_nivel'];
+$image = $array['image'];
 ?>
