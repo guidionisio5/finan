@@ -11,7 +11,7 @@ $image = file_get_contents($_FILES['image']['tmp_name']);
 
 $nameImage = md5($_FILES['image']['tmp_name']);
 
-move_uploaded_file($image2['tmp_name'], "images/profile/" .$nameImage . '.jpg');
+move_uploaded_file($image2['tmp_name'], "assets/images/avatars/" .$nameImage . '.jpg');
 
 $sql = "UPDATE usuario SET `image` = '$nameImage' WHERE id=$id";
 $insert = mysqli_query($conexao,$sql);

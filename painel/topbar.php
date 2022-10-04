@@ -1,4 +1,5 @@
 <?php include '_select_nivel.php';?>
+<?php ?>
 <div class="headerbar">
 
             <!-- LOGO -->
@@ -16,7 +17,7 @@
  
                     <li class="list-inline-item dropdown notif">
                         <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
-                            <img src="images/profile/<?php echo $image. '.jpg'?>" alt="Profile image" class="avatar-rounded">
+                            <img src="assets/images/avatars/<?php if($image != null){echo $image.'.jpg';}else{echo 'avatar.png';} ?>" alt="Profile image" class="avatar-rounded">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                             <!-- item-->
